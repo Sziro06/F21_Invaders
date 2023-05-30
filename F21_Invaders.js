@@ -1,9 +1,6 @@
 import EnemyController from "./EnemyController.js";
 import Player from "./Player.js";
 import BulletController from "./BulletController.js";
-// import Enemy from "./Enemy.js";
-// import Bullet from "./Bullet.js";
-import MovingDirection from "./MovingDirection.js";
 
 
 const canvas = document.getElementById("game");
