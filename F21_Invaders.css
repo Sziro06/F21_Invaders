@@ -110,3 +110,58 @@ button{
     font-size: 3rem;
 
 }
+
+#easyButton{
+    color: #232323;
+    padding: 1rem;
+    background-color: aqua;
+}
+
+#normalButton{
+    color: #232323;
+    padding: 1rem;
+    background-color: aqua;
+}
+
+#hardButton{
+    color: #232323;
+    padding: 1rem;
+    background-color: aqua;
+}
+
+
+@import url('https://fonts.cdnfonts.com/css/common-pixel');
+
+
+
+
+
+
+/* 
+.container{
+    display: grid;
+    grid-template-columns: 100%; 
+    grid-auto-rows: 50%;
+    grid-template-areas: "";
+}
+
+.tom-luft{
+    grid-area: 1;
+}
+
+.canvas{
+    grid-area: 2;
+}
+
+.svart
+
+.joystick{
+    grid-area: 3;
+}
+
+.knappen{
+    grid-area: 4;
+} */
+
+
+

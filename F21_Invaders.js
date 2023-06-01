@@ -1,12 +1,23 @@
+//.js filer som jeg har importet
 import EnemyController from "./EnemyController.js";
 import Player from "./Player.js";
 import BulletController from "./BulletController.js";
+import { score } from "./EnemyController.js";
 
-
+// Under her er det variabeler
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 let runde = 1;
+var easyButton = document.getElementById("easyButton");
+var normalButton = document.getElementById("normalButton");
+var hardButton = document.getElementById("hardButton");
+if (localStorage.getItem('highscores')) {
+    //var highscores = JSON.parse(localStorage.getItem('highscores'))
+} else {
+    var highscores = []
+}
+var highscores = []
 
 canvas.width = 700;
 canvas.height = 525;
@@ -26,6 +37,36 @@ const player = new Player(canvas, 3, playerBulletController);
 let isGameOver = false;
 let didWin = false;
 
+//funksjoner nede her
+easyButton.addEventListener("click", function() {
+  setGameMode("easy");
+  const playerBulletController = new BulletController(canvas, 6, "grafisken/stein.png",true);
+});
+
+normalButton.addEventListener("click", function() {
+  setGameMode("normal");
+  const playerBulletController = new BulletController(canvas, 4, "grafisken/stein.png",true);
+});
+
+hardButton.addEventListener("click", function() {
+  setGameMode("hard");
+  const playerBulletController = new BulletController(canvas, 2, "grafisken/stein.png",true);
+});
+
+function setGameMode(mode) {
+    // Gjør endringer i spillets logikk og visning basert på valgt modus
+    if (mode === "easy") {
+      
+    } else if (mode === "normal") {
+      
+    } else if (mode === "hard") {
+      
+    }
+  
+    // Skjul menyen og vis spillets innhold
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("game").style.display = "block";
+  }
 
 function game() {
     checkGameOver();
@@ -51,6 +92,9 @@ function displayGameOver(){
 
 function checkGameOver(){
     if (isGameOver){
+        // update highscores list with score
+        highscores = insertScore(score, highscores);
+        localStorage.setItem('highscores', JSON.stringify(highscores))
         return;
     }
     if(enemyBulletController.collideWith(player)){
@@ -81,11 +125,24 @@ function checkGameOver(){
     if(enemyController.enemyRows.length === 0) {
         didWin = true;
         isGameOver = true; 
+        document.getElementById("menu").style.display = "none";
     }
 }
 
+function insertScore(currentScore, highScores) {
+    highScores.push(currentScore);  
+    highScores.sort(function(a, b) {
+      return b - a;
+    }); 
+    if (highScores.length > 8) {
+      highScores.length = 8;
+    } 
+    return highScores;
+  }
+
+//eksportet variabel.
 export {runde};
 
-//innebygd JavaScript funksjon
+//innebygd JavaScript funksjon. Koden kan endre hastigheten til spille.
 setInterval(game, 900 / 60)
 

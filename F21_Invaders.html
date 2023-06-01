@@ -13,7 +13,16 @@
 </head>
 <body>
     <canvas id="game"></canvas>
-    <script type="module" src="F21_Invaders.js"></script>  
+
+    <div id="menu">
+        <button id="easyButton">Easy</button>
+        <button id="normalButton">Normal</button>
+        <button id="hardButton">Hard</button>
+    </div>
+
+    <div id="game" style="display: none;">
+        <!-- Spillets innhold -->
+      </div> 
     <div class="greencorner-left"></div> 
     <div class="greencorner-right"></div>
     <div class="teller"><div id="telleren">Score</div></div>
@@ -23,5 +32,6 @@
         <img class="joystick" src="grafisken/joystick.png" alt="">
         <button class="refresh" onclick="window.location.reload()">Start på nytt</button>
     </div>
+    <script type="module" src="F21_Invaders.js"></script> 
 </body>
 </html>

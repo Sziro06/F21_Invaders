@@ -29,7 +29,7 @@ export default class EnemyController {
 
     currentDirection = MovingDirection.right;
     xVelocity = 0;
-    yVelocity = 0;
+    yVelocity = 0;  
     defaultXVelocity = 1;
     defaultYVelocity = 1;
     moveDownTimerDefault = 30;
@@ -184,3 +184,5 @@ export default class EnemyController {
         return this.enemyRows.flat().some(enemy=>enemy.collideWith(sprite));
     }
 }
+
+export {score};
