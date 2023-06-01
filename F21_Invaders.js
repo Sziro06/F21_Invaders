@@ -12,12 +12,8 @@ let runde = 1;
 var easyButton = document.getElementById("easyButton");
 var normalButton = document.getElementById("normalButton");
 var hardButton = document.getElementById("hardButton");
-if (localStorage.getItem('highscores')) {
-    //var highscores = JSON.parse(localStorage.getItem('highscores'))
-} else {
-    var highscores = []
-}
-var highscores = []
+var highScores = JSON.parse(localStorage.getItem('highScores')) || [0, 0, 0, 0, 0, 0, 0, 0];
+console.log(highScores);
 
 canvas.width = 700;
 canvas.height = 525;
@@ -91,11 +87,10 @@ function displayGameOver(){
 }
 
 function checkGameOver(){
-    if (isGameOver){
-        // update highscores list with score
-        highscores = insertScore(score, highscores);
-        localStorage.setItem('highscores', JSON.stringify(highscores))
-        return;
+    if (isGameOver) {
+        highScores = updateHighScores(score, highScores);
+        localStorage.setItem('highScores', JSON.stringify(highScores));
+        displayHighScores(highScores);
     }
     if(enemyBulletController.collideWith(player)){
         isGameOver = true;
@@ -129,16 +124,26 @@ function checkGameOver(){
     }
 }
 
-function insertScore(currentScore, highScores) {
-    highScores.push(currentScore);  
+function updateHighScores(score, highScores) {
+    highScores.push(score);
     highScores.sort(function(a, b) {
       return b - a;
-    }); 
-    if (highScores.length > 8) {
-      highScores.length = 8;
-    } 
+    });
+    highScores = highScores.slice(0, 8);
     return highScores;
-  }
+}
+
+function displayHighScores(highScores) {
+    var highScoresList = document.getElementById('highScoresList');
+    highScoresList.innerHTML = '';
+
+    highScores.forEach(function(score, index) {
+        var scoreElement = document.createElement('div');
+        scoreElement.textContent = 'Score ' + (index + 1) + ': ' + score;
+        highScoresList.appendChild(scoreElement);
+    });
+}
+
 
 //eksportet variabel.
 export {runde};
