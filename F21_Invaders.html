@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    <canvas id="game"></canvas>
 
     <div id="menu">
-        <button id="easyButton">Easy</button>
-        <button id="normalButton">Normal</button>
-        <button id="hardButton">Hard</button>
+        <div id="highScoresList" class="highscore-liste"></div>
+        <button id="start">Start</button>
     </div>
 
-    <div id="highScoresList" class="highscore-liste"></div>
+    <canvas id="game"></canvas>
+
+    
     <div id="game" style="display: none;">
         <!-- Spillets innhold -->
     </div>
@@ -31,7 +31,12 @@
     <div class="teller">
         <div id="telleren">Score</div>
     </div>
+
+
+
     <div class="joystickBord">
+        <input id="name" type="text" placeholder="Name" value="Unknown"/>
+        <button id="name">Save</button>
         <img class="whitebutton" src="grafisken/whitebutton.png" alt="">
         <img class="buttonRed" src="grafisken/button.png" alt="">
         <img class="joystick" src="grafisken/joystick.png" alt="">
