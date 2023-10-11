@@ -11,8 +11,10 @@ const ctx = canvas.getContext("2d");
 let runde = 1;
 let startButton = document.getElementById("start");
 let name;
+let menu = document.getElementById("menu");
+let save = document.getElementById("showhighscores");
+save.addEventListener("click", showhighscores);
 
-document.getElementById('name').style.display = "none";
 
 
 //localStorage.setItem('highScores', JSON.stringify([]));
@@ -20,8 +22,8 @@ let highScores = JSON.parse(localStorage.getItem('highScores')) || [] && localSt
 displayHighScores(highScores);
 
 
-canvas.width = 700;
-canvas.height = 525;
+canvas.width = 600;
+canvas.height = 450;
 
 const background = new Image();
 background.src = "grafisken/fyrstikkalleen.png";
@@ -49,11 +51,9 @@ function setGameMode(mode) {
     // Gjør endringer i spillets logikk og visning basert på valgt modus
     if (mode === "start") {
         setIntervalID = setInterval(game, 900 / 60)
-    }
-    if (checkClickButton = true){
-    // Skjul menyen og vis spillets innhold
-    document.getElementById("menu").style.display = "none";
-    }
+        menu.style.display = "none";
+    } //if (checkClickButton){
+    // }
 }
 
 function game() {
@@ -124,7 +124,7 @@ function checkGameOver(){
     if(enemyController.enemyRows.length === 0) {
         didWin = true;
         isGameOver = true; 
-        document.getElementById("menu").style.display = "none";
+        menu.style.display = "none";
     }
 }
 
@@ -146,6 +146,16 @@ function displayHighScores(highScores) {
       highScoresList.appendChild(scoreElement);
     });
 }
+
+function showhighscores() {
+    menu.style.display = "block";
+    document.getElementById("namebox").style.display = "none";
+}
+
+if (highScores.length > 0) {
+    startButton.style.left = '38%';
+    startButton.style.top = '-70%';
+} 
 
 //eksportet variabel.
 export {runde};

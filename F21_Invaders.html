@@ -15,7 +15,12 @@
 
 <body>
 
-    <div id="menu">
+    <div id="namebox">
+        <input id="name" type="text" placeholder="Name" value="Unknown"/>
+        <button class="save" id="showhighscores">Save</button>
+    </div>
+
+    <div id="menu" style="display: none;">
         <div id="highScoresList" class="highscore-liste"></div>
         <button id="start">Start</button>
     </div>
@@ -35,12 +40,10 @@
 
 
     <div class="joystickBord">
-        <input id="name" type="text" placeholder="Name" value="Unknown"/>
-        <button id="name">Save</button>
         <img class="whitebutton" src="grafisken/whitebutton.png" alt="">
         <img class="buttonRed" src="grafisken/button.png" alt="">
         <img class="joystick" src="grafisken/joystick.png" alt="">
-        <button class="refresh" onclick="window.location.reload()">Start på nytt</button>
+        <button class="refresh" onclick="window.location.reload()">Ny runde</button>
     </div>
     <script type="module" src="F21_Invaders.js"></script>
 </body>
