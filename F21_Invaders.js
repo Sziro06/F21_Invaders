@@ -11,7 +11,10 @@ const ctx = canvas.getContext("2d");
 let runde = 1;
 let startButton = document.getElementById("start");
 let name;
+let namebox = document.getElementById("namebox");
 let menu = document.getElementById("menu");
+let togglenameboxandhighscoremenu = document.getElementById("togglenameboxandhighscoremenu");
+togglenameboxandhighscoremenu.addEventListener("click", toggleNameboxAndHighscoreMenu)
 let save = document.getElementById("showhighscores");
 save.addEventListener("click", showhighscores);
 
@@ -28,7 +31,7 @@ canvas.height = 450;
 const background = new Image();
 background.src = "grafisken/fyrstikkalleen.png";
 
-const playerBulletController = new BulletController(canvas, 20, "grafisken/stein.png",true);
+const playerBulletController = new BulletController(canvas, 2, "grafisken/stein.png",true);
 const enemyBulletController = new BulletController(canvas, 4, "grafisken/visma.png", false);
 const enemyController = new EnemyController(
     canvas, 
@@ -149,13 +152,47 @@ function displayHighScores(highScores) {
 
 function showhighscores() {
     menu.style.display = "block";
-    document.getElementById("namebox").style.display = "none";
+    namebox.style.display = "none";
+    togglenameboxandhighscoremenu.innerText = "Name";
+    togglenameboxandhighscoremenu.style.left = "25%"
 }
 
-if (highScores.length > 0) {
-    startButton.style.left = '38%';
+function toggleNameboxAndHighscoreMenu() {
+    if (namebox.style.display === "block") {
+        namebox.style.display = "none";
+        menu.style.display = "block";
+        togglenameboxandhighscoremenu.innerText = "Name";
+        togglenameboxandhighscoremenu.style.left = "25%"
+    } else {
+        menu.style.display = "none";
+        namebox.style.display = "block"; 
+        togglenameboxandhighscoremenu.innerText = "Highscorelist";
+        togglenameboxandhighscoremenu.style.left = "23%"
+    }
+}
+
+if(highScores.length === 1 || highScores.length === 2) {
+    startButton.style.left = '36%';
     startButton.style.top = '-70%';
-} 
+} else if ( highScores.length === 3) {
+    startButton.style.left = '38%';
+    startButton.style.top = '-50%';
+} else if (highScores.length === 4) {
+    startButton.style.left = '38%';
+    startButton.style.top = '-25%';
+} else if (highScores.length === 5) {
+    startButton.style.left = '38%';
+    startButton.style.top = '-5%';
+} else if (highScores.length === 6) {
+    startButton.style.left = '38%';
+    startButton.style.top = '0%';
+} else if (highScores.length === 7) {
+    startButton.style.left = '38%';
+    startButton.style.top = '5%';
+} else if (highScores.length === 8) {
+    startButton.style.left = '38%';
+    startButton.style.top = '10%';
+}
 
 //eksportet variabel.
 export {runde};

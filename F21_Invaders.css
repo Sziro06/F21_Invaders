@@ -50,7 +50,6 @@ body {
     left: 24.2rem;
     height: auto;
     width: 16rem;
-    cursor: pointer;
 }
 
 .joystick {
@@ -68,7 +67,7 @@ body {
     margin-inline: auto;
     height: auto;
     width: max-content;
-    padding-block: 2rem;
+    padding: 2rem;
     border-radius: 100%;
     cursor: pointer;
 }
@@ -210,4 +209,13 @@ button {
     border-radius: 10px;
     text-align: center;
     padding: 0.3rem;
+}
+
+#togglenameboxandhighscoremenu{
+    position: absolute;
+    top: 33%;
+    left: 23%;
+    padding: 2rem;
+    cursor: pointer;
+    border-radius: 100%;
 }
